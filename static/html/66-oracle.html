@@ -1,0 +1,925 @@
+<!doctype html>
+<html style='font-size:18px !important'>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>66-oracle</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root { --side-bar-bg-color: #fafafa; --control-text-color: #777; }
+html { font-size: 16px; }
+body { font-family: "Microsoft YaHei", SimSun, KaiTi, Helvetica, Arial, sans-serif; color: rgb(51, 51, 51); line-height: 1.6; }
+#write { max-width: 860px; margin: 0px auto; padding: 30px 30px 100px; }
+#write > ul:first-child, #write > ol:first-child { margin-top: 30px; }
+a { color: rgb(65, 131, 196); }
+h1, h2, h3, h4, h5, h6 { position: relative; margin-top: 1rem; margin-bottom: 1rem; font-weight: bold; line-height: 1.4; cursor: text; }
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor { text-decoration: none; }
+h1 tt, h1 code { font-size: inherit; }
+h2 tt, h2 code { font-size: inherit; }
+h3 tt, h3 code { font-size: inherit; }
+h4 tt, h4 code { font-size: inherit; }
+h5 tt, h5 code { font-size: inherit; }
+h6 tt, h6 code { font-size: inherit; }
+h1 { padding-bottom: 0.2em; font-size: 1.5em; line-height: 1.2; border-bottom: 1px solid rgb(238, 238, 238); color: rgb(63, 87, 112); }
+h2 { font-size: 1.4em; line-height: 1.225; border-bottom: 1px solid rgb(238, 238, 238); color: rgb(160, 64, 64); }
+h3 { font-size: 1.3em; line-height: 1.43; color: rgb(0, 136, 0); }
+h4 { font-size: 1.2em; color: blue; }
+h5 { font-size: 1.2em; color: blueviolet; }
+h6 { font-size: 1.2em; color: rgb(1, 72, 194); }
+p, blockquote, ul, ol, dl, table { margin: 0.8em 0px; }
+li > ol, li > ul { margin: 0px; }
+hr { height: 2px; padding: 0px; margin: 16px 0px; background-color: rgb(231, 231, 231); border: 0px none; overflow: hidden; box-sizing: content-box; }
+li p.first { display: inline-block; }
+ul, ol { padding-left: 30px; }
+ul:first-child, ol:first-child { margin-top: 0px; }
+ul:last-child, ol:last-child { margin-bottom: 0px; }
+blockquote { border-left: 4px solid rgb(223, 226, 229); padding: 0px 15px; color: rgb(119, 119, 119); }
+blockquote blockquote { padding-right: 0px; }
+table { padding: 0px; word-break: initial; }
+table tr { border-top: 1px solid rgb(223, 226, 229); margin: 0px; padding: 0px; }
+table tr:nth-child(2n), thead { background-color: rgb(248, 248, 248); }
+table tr th { font-weight: bold; border-width: 1px 1px 0px; border-top-style: solid; border-right-style: solid; border-left-style: solid; border-top-color: rgb(223, 226, 229); border-right-color: rgb(223, 226, 229); border-left-color: rgb(223, 226, 229); border-image: initial; border-bottom-style: initial; border-bottom-color: initial; margin: 0px; padding: 6px 13px; }
+table tr td { border: 1px solid rgb(223, 226, 229); margin: 0px; padding: 6px 13px; }
+table tr th:first-child, table tr td:first-child { margin-top: 0px; }
+table tr th:last-child, table tr td:last-child { margin-bottom: 0px; }
+.CodeMirror-lines { padding-left: 4px; }
+.code-tooltip { box-shadow: rgba(0, 28, 36, 0.3) 0px 1px 1px 0px; border-top: 1px solid rgb(238, 242, 242); }
+.md-fences, code, tt { border: 1px solid rgb(231, 234, 237); background-color: rgb(248, 248, 248); border-radius: 3px; padding: 2px 4px 0px; font-size: 0.9em; }
+code { background-color: rgb(243, 244, 244); padding: 0px 2px; }
+.md-fences { margin-bottom: 15px; margin-top: 15px; padding-top: 8px; padding-bottom: 6px; }
+.md-task-list-item > input { margin-left: -1.3em; }
+@media print {
+  html { font-size: 13px; }
+  table, pre { break-inside: avoid; }
+  pre { overflow-wrap: break-word; }
+}
+.md-fences { background-color: rgb(248, 248, 248); }
+#write pre.md-meta-block { padding: 1rem; font-size: 85%; line-height: 1.45; background-color: rgb(247, 247, 247); border: 0px; border-radius: 3px; color: rgb(119, 119, 119); margin-top: 0px !important; }
+.mathjax-block > .code-tooltip { bottom: 0.375rem; }
+.md-mathjax-midline { background: rgb(250, 250, 250); }
+#write > h3.md-focus::before { left: -1.5625rem; top: 0.375rem; }
+#write > h4.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+#write > h5.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+#write > h6.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+.md-image > .md-meta { border-radius: 3px; padding: 2px 0px 0px 4px; font-size: 0.9em; color: inherit; }
+.md-tag { color: rgb(167, 167, 167); opacity: 1; }
+.md-toc { margin-top: 20px; padding-bottom: 20px; }
+.sidebar-tabs { border-bottom: none; }
+#typora-quick-open { border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); }
+#typora-quick-open-item { background-color: rgb(250, 250, 250); border-color: rgb(254, 254, 254) rgb(229, 229, 229) rgb(229, 229, 229) rgb(238, 238, 238); border-style: solid; border-width: 1px; }
+.on-focus-mode blockquote { border-left-color: rgba(85, 85, 85, 0.12); }
+header, .context-menu, .megamenu-content, footer { font-family: "Segoe UI", Arial, sans-serif; }
+.file-node-content:hover .file-node-icon, .file-node-content:hover .file-node-open-state { visibility: visible; }
+.mac-seamless-mode #typora-sidebar { background-color: var(--side-bar-bg-color); }
+.md-lang { color: rgb(180, 101, 77); }
+.html-for-mac .context-menu { --item-hover-bg-color: #E6F0FE; }
+#md-notification .btn { border: 0px; }
+.dropdown-menu .divider { border-color: rgb(229, 229, 229); }
+.ty-preferences .window-content { background-color: rgb(250, 250, 250); }
+.ty-preferences .nav-group-item.active { color: white; background: rgb(153, 153, 153); }
+
+
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="n135"><a class="md-toc-inner" href="#oracle">Oracle</a></span><span class="md-toc-item md-toc-h1" data-ref="n2"><a class="md-toc-inner" href="#第一天">第一天</a></span><span class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#第-1-章">第 1 章 </a></span><span class="md-toc-item md-toc-h3" data-ref="n4"><a class="md-toc-inner" href="#一-oracle介绍了解">一、 oracle介绍[了解]</a></span><span class="md-toc-item md-toc-h3" data-ref="n6"><a class="md-toc-inner" href="#二-oracle安装了解">二、 Oracle安装[了解]</a></span><span class="md-toc-item md-toc-h3" data-ref="n8"><a class="md-toc-inner" href="#三-oracle体系结构理解">三、 Oracle体系结构[理解]</a></span><span class="md-toc-item md-toc-h3" data-ref="n20"><a class="md-toc-inner" href="#四-创建表空间理解">四、 创建表空间[理解]</a></span><span class="md-toc-item md-toc-h3" data-ref="n25"><a class="md-toc-inner" href="#五-用户理解">五、 用户[理解]</a></span><span class="md-toc-item md-toc-h3" data-ref="n32"><a class="md-toc-inner" href="#六-oracle数据类型应用">六、 Oracle数据类型[应用]</a></span><span class="md-toc-item md-toc-h3" data-ref="n35"><a class="md-toc-inner" href="#七-表的管理应用">七、 表的管理[应用]</a></span><span class="md-toc-item md-toc-h4" data-ref="n36"><a class="md-toc-inner" href="#11-建表">1.1 建表</a></span><span class="md-toc-item md-toc-h4" data-ref="n40"><a class="md-toc-inner" href="#21-表删除">2.1 表删除</a></span><span class="md-toc-item md-toc-h4" data-ref="n42"><a class="md-toc-inner" href="#31-表的修改">3.1 表的修改</a></span><span class="md-toc-item md-toc-h4" data-ref="n50"><a class="md-toc-inner" href="#41-数据库表数据的更新">4.1 数据库表数据的更新</a></span><span class="md-toc-item md-toc-h4" data-ref="n58"><a class="md-toc-inner" href="#51-序列">5.1 序列</a></span><span class="md-toc-item md-toc-h3" data-ref="n62"><a class="md-toc-inner" href="#八-scott用户下的表结构了解">八、 Scott用户下的表结构[了解]</a></span><span class="md-toc-item md-toc-h3" data-ref="n64"><a class="md-toc-inner" href="#九-单行函数应用">九、 单行函数[应用]</a></span><span class="md-toc-item md-toc-h4" data-ref="n65"><a class="md-toc-inner" href="#1-字符函数">1. 字符函数</a></span><span class="md-toc-item md-toc-h4" data-ref="n67"><a class="md-toc-inner" href="#2-数值函数">2. 数值函数</a></span><span class="md-toc-item md-toc-h3" data-ref="n78"><a class="md-toc-inner" href="#十-多行函数聚合函数）">十、 多行函数（聚合函数）</a></span><span class="md-toc-item md-toc-h3" data-ref="n81"><a class="md-toc-inner" href="#十一-分组统计">十一、 分组统计</a></span><span class="md-toc-item md-toc-h3" data-ref="n84"><a class="md-toc-inner" href="#十二-多表查询应用">十二、 多表查询[应用]</a></span><span class="md-toc-item md-toc-h3" data-ref="n88"><a class="md-toc-inner" href="#十三-子查询应用">十三、 子查询[应用]</a></span><span class="md-toc-item md-toc-h3" data-ref="n92"><a class="md-toc-inner" href="#十四-rownum与分页查询应用">十四、 Rownum与分页查询[应用]</a></span><span class="md-toc-item md-toc-h1" data-ref="n94"><a class="md-toc-inner" href="#第二天">第二天</a></span><span class="md-toc-item md-toc-h2" data-ref="n95"><a class="md-toc-inner" href="#第一章">第一章</a></span><span class="md-toc-item md-toc-h3" data-ref="n96"><a class="md-toc-inner" href="#一视图应用">一.视图[应用]</a></span><span class="md-toc-item md-toc-h3" data-ref="n98"><a class="md-toc-inner" href="#二索引应用">二.索引[应用]</a></span><span class="md-toc-item md-toc-h3" data-ref="n102"><a class="md-toc-inner" href="#三plsql-基本语法了解">三.pl/sql 基本语法[了解]</a></span><span class="md-toc-item md-toc-h3" data-ref="n105"><a class="md-toc-inner" href="#四存储过程理解">四.存储过程[理解]</a></span><span class="md-toc-item md-toc-h3" data-ref="n108"><a class="md-toc-inner" href="#五存储函数理解">五.存储函数[理解]</a></span><span class="md-toc-item md-toc-h3" data-ref="n111"><a class="md-toc-inner" href="#六触发器理解">六.触发器[理解]</a></span><span class="md-toc-item md-toc-h3" data-ref="n131"><a class="md-toc-inner" href="#七java程序调用存储过程应用">七．Java程序调用存储过程[应用]</a></span></p></div><h1><a name="oracle" class="md-header-anchor"></a><span>Oracle</span></h1><h1><a name="第一天" class="md-header-anchor"></a><span>第一天</span></h1><h2><a name="第-1-章" class="md-header-anchor"></a><span>第 1 章 </span></h2><h3><a name="一-oracle介绍了解" class="md-header-anchor"></a><span>一、 oracle介绍[了解]</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ORACLE数据库系统是美国ORACLE公司（甲骨文）提供的以分布式数据库为核心的一组软件产品，是目前最流行的客户/服务器(CLIENT/SERVER)或B/S体系结构的数据库之一。比如SilverStream就是基于数据库的一种中间件。ORACLE数据库是目前世界上使用最为广泛的数据库管理系统，作为一个通用的数据库系统，它具有完整的数据管理功能；作为一个关系数据库，它是一个完备关系的产品；作为分布式数据库它实现了分布式处理功能。但它的所有知识，只要在一种机型上学习了ORACLE知识，便能在各种类型的机器上使用它。</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 125px;"></div><div class="CodeMirror-gutters" style="display: none; height: 125px;"></div></div></div></pre><h3><a name="二-oracle安装了解" class="md-header-anchor"></a><span>二、 Oracle安装[了解]</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">课上已准备好了一个安装全套Oracle软件的XP虚拟机，我们直接在虚拟机中学习，如果自己想把软件安装到自己电脑请参考文档《Oracle安装.docx》</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 50px;"></div><div class="CodeMirror-gutters" style="display: none; height: 50px;"></div></div></div></pre><h3><a name="三-oracle体系结构理解" class="md-header-anchor"></a><span>三、 Oracle体系结构[理解]</span></h3><p><img src="img/wps1.jpg" referrerpolicy="no-referrer" alt="img"></p><ol start='' ><li><span>数据库</span>
+<span>Oracle数据库是数据的物理存储。这就包括（数据文件ORA或者DBF、控制文件、联机日志、参数文件）。其实Oracle数据库的概念和其它数据库不一样，这里的数据库是一个操作系统只有一个库。可以看作是Oracle就只有一个大数据库。</span></li><li><span>实例</span>
+<span>一个Oracle实例（Oracle Instance）有一系列的后台进程（Backguound Processes)和内存结构（Memory Structures)组成。一个数据库可以有n个实例。</span></li><li><span>用户</span>
+<span>用户是在实例下建立的。不同实例可以建相同名字的用户。</span></li><li><span>表空间</span>
+<span>表空间是Oracle对物理数据库上相关数据文件（ORA或者DBF文件）的逻辑映射。一个数据库在逻辑上被划分成一到若干个表空间，每个表空间包含了在逻辑上相关联的一组结构。每个数据库至少有一个表空间(称之为system表空间)。</span>
+<span>每个表空间由同一磁盘上的一个或多个文件组成，这些文件叫数据文件(datafile)。一个数据文件只能属于一个表空间。</span>
+<img src="img/wps2.jpg" referrerpolicy="no-referrer" alt="img"></li><li><span>数据文件（dbf、ora）</span>
+<span>数据文件是数据库的物理存储单位。数据库的数据是存储在表空间中的，真正是在某一个或者多个数据文件中。而一个表空间可以由一个或多个数据文件组成，一个数据文件只能属于一个表空间。一旦数据文件被加入到某个表空间后，就不能删除这个文件，如果要删除某个数据文件，只能删除其所属于的表空间才行。</span>
+<span>注： 表的数据，是有用户放入某一个表空间的，而这个表空间会随机把这些表数据放到一个或者多个数据文件中。</span>
+<span>由于oracle的数据库不是普通的概念，oracle是有用户和表空间对数据进行管理和存放的。</span>
+<span>但是表不是有表空间去查询的，而是由用户去查的。因为不同用户可以在同一个表空间建立同一个名字的表！这里区分就是用户了！</span>
+<img src="img/wps3.jpg" referrerpolicy="no-referrer" alt="img">
+<img src="img\wps4.jpg" referrerpolicy="no-referrer" alt="img"></li></ol><h3><a name="四-创建表空间理解" class="md-header-anchor"></a><span>四、 创建表空间[理解]</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">表空间？ ORACLE数据库的逻辑单元。 数据库---表空间 一个表空间可以与多个数据文件（物理结构）关联一个数据库下可以建立多个表空间，一个表空间可以建立多个用户、一个用户下可以建立多个表。</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 50px;"></div><div class="CodeMirror-gutters" style="display: none; height: 50px;"></div></div></div></pre><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="sql"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="sql"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">create</span> tablespace itcast</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">datafile <span class="cm-string">'c:\itcast.dbf'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">size <span class="cm-number">100</span> m</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">autoextend <span class="cm-keyword">on</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">next <span class="cm-number">10</span> m</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 125px;"></div><div class="CodeMirror-gutters" style="display: none; height: 125px;"></div></div></div></pre><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">itcast 为表空间名称</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">datafile 指定表空间对应的数据文件</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">size 后定义的是表空间的初始大小</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">autoextend on 自动增长 ，当表空间存储都占满时，自动增长</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">next 后指定的是一次自动增长的大小。</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 125px;"></div><div class="CodeMirror-gutters" style="display: none; height: 125px;"></div></div></div></pre><h3><a name="五-用户理解" class="md-header-anchor"></a><span>五、 用户[理解]</span></h3><ol start='6' ><li><span>创建用户</span></li></ol><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="sql"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="sql"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">create</span> user itcastuser</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">identified <span class="cm-keyword">by</span> itcast</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">default tablespace itcast</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">identified <span class="cm-keyword">by</span> 后边是用户的密码</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">default tablespace 后边是表空间名称</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">oracle数据库与其它数据库产品的区别在于，表和其它的数据库对象都是存储在用户下的。</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 150px;"></div><div class="CodeMirror-gutters" style="display: none; height: 150px;"></div></div></div></pre><ol start='7' ><li><span>用户赋权限</span>
+<span>新创建的用户没有任何权限，登陆后会提示</span>
+<img src="img/wps42.jpg" referrerpolicy="no-referrer" alt="img">
+<span> Oracle中已存在三个重要的角色：connect角色，resource角色，dba角色。</span>
+<span> CONNECT角色： --是授予最终用户的典型权利，最基本的</span>
+<span>     ALTER SESSION --修改会话</span>
+<span>     CREATE CLUSTER --建立聚簇</span>
+<span>     CREATE DATABASE LINK --建立数据库链接</span>
+<span>     CREATE SEQUENCE --建立序列</span>
+<span>     CREATE SESSION --建立会话</span>
+<span>     CREATE SYNONYM --建立同义词</span>
+<span>     CREATE VIEW --建立视图</span>
+<span> RESOURCE角色： --是授予开发人员的</span>
+<span>     CREATE CLUSTER --建立聚簇</span>
+<span>     CREATE PROCEDURE --建立过程</span>
+<span>     CREATE SEQUENCE --建立序列</span>
+<span>     CREATE TABLE --建表</span>
+<span>     CREATE TRIGGER --建立触发器</span>
+<span>     CREATE TYPE --建立类型</span>
+<span> DBA角色：拥有全部特权，是系统最高权限，只有DBA才可以创建数据库结构，并且系统权限也需要DBA授出，且DBA用户可以操作全体用户的任意基表，包括删除</span>
+<span> grant dba to itcastuser</span>
+<span> 进入system用户下给用户赋予dba权限，否则无法正常登陆</span></li></ol><h3><a name="六-oracle数据类型应用" class="md-header-anchor"></a><span>六、 Oracle数据类型[应用]</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|No |数据类型| 描述|</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|----|----|----|</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|1 |Varchar， varchar2| 表示一个字符串|</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|2 |NUMBER |NUMBER(n)表示一个整数，长度是n&lt;br&gt; NUMBER(m,n):表示一个小数，总长度是m，&lt;br&gt;小数是n，整数是m-n|</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|3 |DATA |表示日期类型|</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|4 |CLOB |大对象，表示大文本数据类型，可存4G|</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|5 |BLOB |大对象，表示二进制数据，可存4G|</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 200px;"></div><div class="CodeMirror-gutters" style="display: none; height: 200px;"></div></div></div></pre><h3><a name="七-表的管理应用" class="md-header-anchor"></a><span>七、 表的管理[应用]</span></h3><h4><a name="11-建表" class="md-header-anchor"></a><span>1.1 建表</span></h4><p><span>语法：</span>
+<span>Create table 表名（</span>
+<span>    字段 1 数据类型 [default 默认值],</span>
+<span>    字段 2 数据类型 [default 默认值],</span>
+<span>    ...</span>
+<span>    字段n 数据类型 [default 默认值]</span>
+<span>）;</span></p><p><span>范例：创建person表</span>
+<span>create table person(</span>
+<span>    pid number( 10 ),</span>
+<span>    name varchar2( 10 ),</span>
+<span>    gender number( 1 ) default 1 ,</span>
+<span>    birthday date</span>
+<span>);</span></p><p><span>insert into person(pid, name, gender, birthday)</span>
+<span>values( 1 , &#39;张三&#39;, 1 , to_date(&#39;1999-12-22&#39;, &#39;yyyy-MM-dd&#39;));</span></p><h4><a name="21-表删除" class="md-header-anchor"></a><span>2.1 表删除</span></h4><p><span>语法：DROP TABLE 表名</span></p><h4><a name="31-表的修改" class="md-header-anchor"></a><span>3.1 表的修改</span></h4><p><span>在sql中使用alter可以修改表</span></p><ul><li><span>添加语法：ALTER TABLE 表名称 ADD(列名 1 类型 [DEFAULT 默认值]，列名 1 类型</span>
+<span>[DEFAULT 默认值]...)</span></li><li><span>修改语法：ALTER TABLE 表名称 MODIFY(列名 1 类型 [DEFAULT 默认值]，列名 1 类型</span>
+<span>[DEFAULT 默认值]...)</span></li><li><span>修改列名: ALTER TABLE 表名称 RENAME 列名1 TO 列名 2</span>
+<span>范例：在person表中增加列address</span>
+<span>  alter table person add(address varchar2( 10 ));</span>
+<span>范例：把person表的address列的长度修改成 20 长度</span>
+<span>  alter table person modify(address varchar2( 20 ));</span></li></ul><h4><a name="41-数据库表数据的更新" class="md-header-anchor"></a><span>4.1 数据库表数据的更新</span></h4><ol start='' ><li><span>INSERT（增加）</span>
+<span>标准写法：</span>
+<span> INSERT INTO表名[(列名 1 ，列名 2 ，...)]VALUES(值 1 ，值 2 ，...)</span>
+<span>简单写法（不建议）</span>
+<span> INSERT INTO 表名VALUES(值 1 ，值 2 ，...)</span>
+<span>注意：使用简单的写法必须按照表中的字段的顺序来插入值，而且如果有为空的字段使用null</span>
+<span> insert into person values(2,&#39;李四&#39;,1,null,&#39;北京育新&#39;);</span></li><li><span>UPDATE（修改）</span>
+<span>全部修改：UPDATE 表名 SET 列名1=值 1 ，列名2=值 2 ，....</span>
+<span>局部修改：UPDATE 表名 SET 列名1=值 1 ，列名2=值 2 ，....WHERE 修改条件；</span>
+<span>全部更新</span>
+<span>局部更新</span></li><li><span>DELETE（删除）</span>
+<span>语法 : DELETE FROM 表名 WHERE 删除条件;</span>
+<span>在删除语句中如果不指定删除条件的话就会删除所有的数据</span>
+<span>因为oracle的事务对数据库的变更的处理，我们必须做提交事务才能让数据真正的插入到数据库中，在同样在执行完数据库变更的操作后还可以把事务进行回滚，这样就不会插入到数据库。如果事务提交后则不可以再回滚。</span>
+<span>提交：commit</span>
+<span>回滚：rollback</span></li></ol><h4><a name="51-序列" class="md-header-anchor"></a><span>5.1 序列</span></h4><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">在很多数据库中都存在一个自动增长的列,如果现在要想在 oracle 中完成自动增长的功能,则只能依靠序列完成,所有的自动增长操作,需要用户手工完成处理。</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 50px;"></div><div class="CodeMirror-gutters" style="display: none; height: 50px;"></div></div></div></pre><p><span>语法：CREATE SEQUENCE 序列名</span>
+<span>    [INCREMENT BY n]</span>
+<span>    [START WITH n]</span>
+<span>    [{MAXVALUE/ MINVALUE n|NOMAXVALUE}]</span>
+<span>    [{CYCLE|NOCYCLE}]</span>
+<span>    [{CACHE n|NOCACHE}];</span>
+<span>范例:创建一个seqpersonid的序列,验证自动增长的操作</span>
+<span>    CREATE SEQUENCE seqpersonid;</span>
+<span>序列创建完成之后,所有的自动增长应该由用户自己处理,所以在序列中提供了以下的两种操作：</span>
+<span>nextval :取得序列的下一个内容</span>
+<span>currval :取得序列的当前内容</span>
+<span>    select seqpersonid.nextval from dual;</span>
+<span>    select seqpersonid.currval from dual;</span>
+<span>在插入数据时需要自增的主键中可以这样使用</span>
+<img src="img/wps105.jpg" referrerpolicy="no-referrer" alt="img">
+<span>    在实际项目中每一张表会配一个序列，但是表和序列是没有必然的联系的，一个序列被哪一张表使用都可以，但是我们一般都是一张表用一个序列。</span>
+<span>    序列的管理一般使用工具来管理。</span></p><h3><a name="八-scott用户下的表结构了解" class="md-header-anchor"></a><span>八、 Scott用户下的表结构[了解]</span></h3><p><img src="img/wps106.jpg" referrerpolicy="no-referrer" alt="img">
+<img src="img\wps107.jpg" referrerpolicy="no-referrer" alt="img">
+<img src="img\wps108.jpg" referrerpolicy="no-referrer" alt="img">
+<img src="img\wps109.jpg" referrerpolicy="no-referrer" alt="img">
+<img src="img/wps110.jpg" referrerpolicy="no-referrer" alt="img"></p><h3><a name="九-单行函数应用" class="md-header-anchor"></a><span>九、 单行函数[应用]</span></h3><h4><a name="1-字符函数" class="md-header-anchor"></a><span>1. 字符函数</span></h4><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">接收字符输入返回字符或者数值，dual是伪表</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  1. 把小写的字符转换成大小的字符</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  upper('smith')</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  2. 把大写字符变成小写字符</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  lower('SMITH')</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  3. 作业</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  根据API学习：首字母大写函数、字符串链接函数、字符串截取函数、字符串替换函数、获取字符串长度函数等。</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 200px;"></div><div class="CodeMirror-gutters" style="display: none; height: 200px;"></div></div></div></pre><h4><a name="2-数值函数" class="md-header-anchor"></a><span>2. 数值函数</span></h4><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1. 四舍五入函数：ROUND()</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  默认情况下ROUND四舍五入取整，可以自己指定保留的位数。</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 50px;"></div><div class="CodeMirror-gutters" style="display: none; height: 50px;"></div></div></div></pre><p><img src="img/wps112.jpg" referrerpolicy="no-referrer" alt="img">
+<img src="img/wps114.jpg" referrerpolicy="no-referrer" alt="img">
+<span>    2. 作业</span>
+<span>        根据API学习：数值截取函数、取余函数等</span>
+<span>1.1.1 3.日期函数</span>
+<span>    Oracle中提供了很多和日期相关的函数，包括日期的加减，在日期加减时有一些规律</span>
+<span>    日期 – 数字 = 日期</span>
+<span>    日期 + 数字 = 日期</span>
+<span>    日期 – 日期 = 数字</span></p><ol start='' ><li><span>范例：查询雇员的进入公司的周数。</span>
+<span>分析：查询雇员进入公司的天数(sysdate – 入职日期)/7就是周数</span>
+<img src="img/wps117.jpg" referrerpolicy="no-referrer" alt="img"></li><li><span>获得两个时间段中的月数：MONTHS_BETWEEN()</span>
+<span>范例：查询所有雇员进入公司的月数</span>
+<img src="img/wps118.jpg" referrerpolicy="no-referrer" alt="img">
+<span>1.1.2 4.转换函数</span></li><li><span>TO_CHAR:字符串转换函数</span>
+<span>范例：查询所有的雇员将将年月日分开，此时可以使用TO_CHAR函数来拆分拆分时需要使用通配符</span>
+<span>年：y, 年是四位使用yyyy</span>
+<span>月：m, 月是两位使用mm</span>
+<span>日：d, 日是两位使用dd</span>
+<img src="img\wps119.jpg" referrerpolicy="no-referrer" alt="img">
+<img src="img/wps120.jpg" referrerpolicy="no-referrer" alt="img">
+<span>在结果中 10 以下的月前面被被补了前导零，可以使用fm去掉前导零</span>
+<img src="img/wps121.jpg" referrerpolicy="no-referrer" alt="img"></li><li><span>TO_DATE:日期转换函数</span>
+<span>TO_DATE可以把字符串的数据转换成日期类型</span>
+<img src="img/wps122.jpg" referrerpolicy="no-referrer" alt="img">
+<span>1.1.3 5.通用函数</span>
+<span>1 ．空值处理nvl</span>
+<span>范例：查询所有的雇员的年薪</span>
+<img src="img/wps123.jpg" referrerpolicy="no-referrer" alt="img">
+<span>我们发现很多员工的年薪是空的，原因是很多员工的奖金是null，null和任何数值计算都是null，这时我们可以使用nvl来处理。</span>
+<img src="img/wps124.jpg" referrerpolicy="no-referrer" alt="img">
+<span>2.Decode函数</span>
+<span>该函数类似if....else if...esle</span>
+<span>语法：DECODE(col/expression, [search1,result1],[search2, result2]....[default])</span>
+<span>Col/expression:列名或表达式</span>
+<span>Search1，search2...:用于比较的条件</span>
+<span>Result1, result2...:返回值</span>
+<span>如果col/expression和Searchi匹配就返回resulti,否则返回default的默认值</span>
+<img src="img/wps125.jpg" referrerpolicy="no-referrer" alt="img">
+<span>范例：查询出所有雇员的职位的中文名</span>
+<img src="img/wps126.jpg" referrerpolicy="no-referrer" alt="img">
+<span>3.case when</span>
+<span>CASE expr WHEN comparison_expr1 THEN return_expr</span>
+<span>    [WHEN comparison_expr2 THEN return_expr</span>
+<span>    WHEN comparison_exprn THEN return_exprn</span>
+<span>    ELSE else_expr]</span>
+<span>END</span>
+<span>select t.empno,</span>
+<span>t.ename,</span>
+<span>case</span>
+<span>    when t.job = &#39;CLERK&#39; then</span>
+<span>    &#39;业务员&#39;</span>
+<span>    when t.job = &#39;MANAGER&#39; then</span>
+<span>    &#39;经理&#39;</span>
+<span>    when t.job = &#39;ANALYST&#39; then</span>
+<span>    &#39;分析员&#39;</span>
+<span>    when t.job = &#39;PRESIDENT&#39; then</span>
+<span>    &#39;总裁&#39;</span>
+<span>    when t.job = &#39;SALESMAN&#39; then</span>
+<span>    &#39;销售&#39;</span>
+<span>else</span>
+<span>    &#39;无业&#39;</span>
+<span>end</span>
+<span>from emp t</span>
+<img src="img/wps144.jpg" referrerpolicy="no-referrer" alt="img"></li></ol><h3><a name="十-多行函数聚合函数）" class="md-header-anchor"></a><span>十、 多行函数（聚合函数）</span></h3><p><span>1.1.3.1 1.统计记录数count()</span>
+<span>范例：查询出所有员工的记录数</span>
+<img src="img/wps145.jpg" referrerpolicy="no-referrer" alt="img">
+<span>不建议使用count(*)，可以使用一个具体的列以免影响性能。</span>
+<img src="img/wps146.jpg" referrerpolicy="no-referrer" alt="img">
+<span>1.1.3.2 2.最小值查询min()</span>
+<span>范例：查询出来员工最低工资</span>
+<img src="img/wps147.jpg" referrerpolicy="no-referrer" alt="img">
+<span>1.1.3.3 3.最大值查询max()</span>
+<span>范例：查询出员工的最高工资</span>
+<img src="img/wps148.jpg" referrerpolicy="no-referrer" alt="img">
+<span>1.1.3.4 4.查询平均值avg()</span>
+<span>范例：查询出员工的平均工资</span>
+<img src="img/wps149.jpg" referrerpolicy="no-referrer" alt="img">
+<span>1.1.3.5 5.求和函数sum()</span>
+<span>范例：查询出 20 号部门的员工的工资总和</span>
+<img src="img/wps150.jpg" referrerpolicy="no-referrer" alt="img"></p><h3><a name="十一-分组统计" class="md-header-anchor"></a><span>十一、 分组统计</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">分组统计需要使用GROUP BY来分组</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">语法：语法：SELECT * |列名 FROM 表名 {WEHRE 查询条件} {GROUP BY 分组字段} ORDER BY 列</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">名1 ASC|DESC，列名2...ASC|DESC</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">范例：查询每个部门的人数</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 100px;"></div><div class="CodeMirror-gutters" style="display: none; height: 100px;"></div></div></div></pre><p><img src="img/wps151.jpg" referrerpolicy="no-referrer" alt="img">
+<span>范例：查询出每个部门的平均工资</span>
+<img src="img/wps152.jpg" referrerpolicy="no-referrer" alt="img">
+<span>如果我们想查询出来部门编号，和部门下的人数</span>
+<img src="img/wps153.jpg" referrerpolicy="no-referrer" alt="img">
+<span>我们发现报了一个ORA- 00937 的错误</span>
+<span>注意：</span>
+<span>    1. 如果使用分组函数，SQL只可以把GOURP BY分组条件字段和分组函数查询出来，不能有其</span>
+<span>    他字段。</span>
+<span>    2. 如果使用分组函数，不使用GROUP BY 只可以查询出来分组函数的值</span>
+<span>    </span><img src="img/wps154.jpg" referrerpolicy="no-referrer" alt="img">
+<span>范例：按部门分组，查询出部门名称和部门的员工数量</span>
+<img src="img/wps155.jpg" referrerpolicy="no-referrer" alt="img">
+<span>范例：查询出部门人数大于 5 人的部门</span>
+<span>分析：需要给count(ename)加条件，此时在本查询中不能使用where，可以使用HAVING</span>
+<img src="img/wps156.jpg" referrerpolicy="no-referrer" alt="img">
+<span>范例：查询出部门平均工资大于 2000 的部门</span>
+<img src="img/wps157.jpg" referrerpolicy="no-referrer" alt="img"></p><h3><a name="十二-多表查询应用" class="md-header-anchor"></a><span>十二、 多表查询[应用]</span></h3><p><span>1.1.4 1.多表连接基本查询</span>
+<span>    使用一张以上的表做查询就是多表查询</span>
+<span>    语法： SELECT {DISTINCT} *|列名.. FROM 表名 别名，表名 1 别名</span>
+<span>    {WHERE 限制条件 ORDER BY 排序字段 ASC|DESC...}</span>
+<span>    范例：查询员工表和部门表</span>
+<img src="img/wps158.jpg" referrerpolicy="no-referrer" alt="img">
+<span>    我们发现产生的记录数是 56 条，我们还会发现emp表是 14 条，dept表是 4 条， 56 正是emp表和dept表的记录数的乘积，我们称其为笛卡尔积。</span>
+<span>    如果多张表进行一起查询而且每张表的数据很大的话笛卡尔积就会变得非常大，对性能造成影响，想要去掉笛卡尔积我们需要关联查询。</span>
+<span>    在两张表中我们发现有一个共同的字段是depno，depno就是两张表的关联的字段，我们可以使用这个字段来做限制条件，两张表的关联查询字段一般是其中一张表的主键，另一张表的外键。</span>
+<img src="img/wps159.jpg" referrerpolicy="no-referrer" alt="img">
+<span>关联之后我们发现数据条数是 14 条，不在是 56 条。</span>
+<span>多表查询我们可以为每一张表起一个别名</span>
+<img src="img/wps160.jpg" referrerpolicy="no-referrer" alt="img">
+<span>范例：查询出雇员的编号，姓名，部门的编号和名称，地址</span>
+<img src="img/wps161.jpg" referrerpolicy="no-referrer" alt="img">
+<span>范例：查询出每个员工的上级领导</span>
+<span>分析：emp表中的mgr字段是当前雇员的上级领导的编号，所以该字段对emp表产生了自身关联，可以使用mgr字段和empno来关联</span>
+<img src="img/wps162.jpg" referrerpolicy="no-referrer" alt="img">
+<span>范例:在上一个例子的基础上查询该员工的部门名称</span>
+<span>分析：只要在上一个例子基础上再加一张表的关联，使用deptno来做关联字段即可</span>
+<img src="img/wps163.jpg" referrerpolicy="no-referrer" alt="img">
+<span>范例：查询出每个员工编号，姓名，部门名称，工资等级和他的上级领导的姓名，工资等级</span>
+<span>select e.empno,</span>
+<span>    e.ename,</span>
+<span>    decode(s.grade,</span>
+<span>        1 ,&#39;一级&#39;,</span>
+<span>        2 ,&#39;二级&#39;,</span>
+<span>        3 ,&#39;三级&#39;,</span>
+<span>        4 ,&#39;四级&#39;,</span>
+<span>        5 ,&#39;五级&#39;) grade,</span>
+<span>    d.dname,</span>
+<span>    e1.empno,</span>
+<span>    e1.ename,</span>
+<span>    decode(s1.grade,</span>
+<span>        1 ,&#39;一级&#39;,</span>
+<span>        2 ,&#39;二级&#39;,</span>
+<span>        3 ,&#39;三级&#39;,</span>
+<span>        4 ,&#39;四级&#39;,</span>
+<span>        5 ,&#39;五级&#39;) grade</span>
+<span>from emp e, emp e1, dept d, salgrade s, salgrade s1</span>
+<span>where e.mgr = e1.empno</span>
+<span>    and e.deptno = d.deptno</span>
+<span>    and e.sal between s.losal and s.hisal</span>
+<span>        and e1.sal between s1.losal and s1.hisal</span>
+<img src="img/wps186.jpg" referrerpolicy="no-referrer" alt="img">
+<span>1.1.5 2.外连接（左右连接）</span></p><ol start='' ><li><span>右连接</span>
+<span>当我们在做基本连接查询的时候，查询出所有的部门下的员工，我们发现编号为 40 的部门下没有员工，但是要求把该部门也展示出来，我们发现上面的基本查询是办不到的</span>
+<img src="img/wps187.jpg" referrerpolicy="no-referrer" alt="img">
+<span>使用(+)表示左连接或者右连接，当(+)在左边表的关联条件字段上时是左连接，如果是在右边表的关联条件字段上就是右连接。</span>
+<span>范例：查询出所有员工的上级领导</span>
+<span>分析：我们发现使用我们以前的做法发现KING的上级领导没有被展示，我们需要使用左右连接把他查询出来</span>
+<img src="img/wps188.jpg" referrerpolicy="no-referrer" alt="img"></li></ol><h3><a name="十三-子查询应用" class="md-header-anchor"></a><span>十三、 子查询[应用]</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">子查询：在一个查询的内部还包括另一个查询，则此查询称为子查询。</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Sql的任何位置都可以加入子查询。</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">范例：查询比 7654 工资高的雇员</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">分析：查询出 7654 员工的工资是多少，把它作为条件</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 100px;"></div><div class="CodeMirror-gutters" style="display: none; height: 100px;"></div></div></div></pre><p><img src="img/wps189.jpg" referrerpolicy="no-referrer" alt="img">
+<span>    子查询在操作中有三类：</span>
+<span>    单列子查询：返回的结果是一列的一个内容</span>
+<span>    单行子查询：返回多个列，有可能是一个完整的记录</span>
+<span>    多行子查询：返回多条记录</span>
+<span>    范例：查询出比雇员 7654 的工资高，同时从事和 7788 的工作一样的员工</span>
+<img src="img/wps190.jpg" referrerpolicy="no-referrer" alt="img">
+<span>    范例：要求查询每个部门的最低工资和最低工资的雇员和部门名称</span>
+<img src="img/wps191.jpg" referrerpolicy="no-referrer" alt="img">
+<span>在返回多条记录的子查询可以把它的结果集当做一张表，给起个别名， 如图中的a。</span></p><h3><a name="十四-rownum与分页查询应用" class="md-header-anchor"></a><span>十四、 Rownum与分页查询[应用]</span></h3><p><span>ROWNUM:表示行号，实际上此是一个列,但是这个列是一个伪列,此列可以在每张表中出现。</span>
+<span>范例：查询emp表带有rownum列</span>
+<span>select rownum, t.* from emp t</span>
+<img src="img/wps193.jpg" referrerpolicy="no-referrer" alt="img">
+<span>我们可以根据rownum来取结果集的前几行，比如前 5 行</span>
+<img src="img/wps194.jpg" referrerpolicy="no-referrer" alt="img">
+<span>但是我们不能取到中间几行，因为rownum不支持大于号，只支持小于号，如果想实现我们的需求怎么办呢？答案是使用子查询，也正是oracle分页的做法。</span>
+<span>第一种写法：</span>
+<span>    select *</span>
+<span>    from (select rownum rm, a.* from (select * from emp) a where rownum &lt; 11 ) b where b.rm &gt;</span>
+<span>    5</span>
+<span>第二种写法：</span>
+<span>    select *</span>
+<span>    from (select rownum r , emp. * from emp ) b</span>
+<span>    where b.r &gt; 5 and b.r &lt; 11</span></p><h1><a name="第二天" class="md-header-anchor"></a><span>第二天</span></h1><h2><a name="第一章" class="md-header-anchor"></a><span>第一章</span></h2><h3><a name="一视图应用" class="md-header-anchor"></a><span>一.视图[应用]</span></h3><p><span>视图就是封装了一条复杂查询的语句。</span>
+<span>语法1.：CREATE VIEW 视图名称 AS 子查询</span>
+<span>范例：建立一个视图，此视图包括了 20 部门的全部员工信息</span>
+<span>    create view empvd20 as select * from emp t where t.deptno = 20</span>
+<span>视图创建完毕就可以使用视图来查询，查询出来的都是 20 部门的员工</span>
+<img src="img/1584089045488.png" referrerpolicy="no-referrer" alt="1584089045488">
+<span>语法 2 ：CREATE OR REPLACE VIEW 视图名称 AS 子查询</span>
+<span>如果视图已经存在我们可以使用语法 2 来创建视图，这样已有的视图会被覆盖。</span>
+<span>create or replace view empvd20 as select * from emp t where t.deptno = 20</span>
+<span>那么视图可以修改吗？</span>
+<img src="img/1584089078832.png" referrerpolicy="no-referrer" alt="1584089078832">
+<img src="img/1584089112318.png" referrerpolicy="no-referrer" alt="1584089112318">
+<span>我们尝试着修改视图但是发现是视图所查询的表的字段值被修改了。所以我们一般不会去修改视图。</span>
+<span>我们可以设置视图为只读。</span>
+<span>语法 3 ：CREATE OR REPLACE VIEW 视图名称 AS 子查询 WITH READ ONLY</span>
+<span>create or replace view empvd20 as select * from emp t where t.deptno = 20 with read </span>
+<span>only</span>
+<img src="img/1584089160822.png" referrerpolicy="no-referrer" alt="1584089160822"></p><h3><a name="二索引应用" class="md-header-anchor"></a><span>二.索引[应用]</span></h3><p><span>索引是用于加速数据存取的数据对象。合理的使用索引可以大大降低i/o次数,从而提高数据访问性能。索引有很多种我们主要介绍常用的几种:</span>
+<span>为什么添加了索引之后，会加快查询速度呢？</span>
+<span>图书馆：如果杂乱地放书的话检索起来就非常困难,所以将书分类，然后再建一个箱子，箱子里面放卡片，卡片里面可以按类查询,按书名查或者类别查,这样的话速度会快很多很多，这个就有点像索引。索引的好处就是提高你找到书的速度，但是正是因为你建了索引，就应该有人专门来维护索引，维护索引是要有时间精力的开销的，也就是说索引是不能乱建的，所以建索引有个原则：如果有一个字段如果不经常查询，就不要去建索引。现在把书变成我们的表，把卡片变成我们的索引，就知道为什么索引会快，为什么会有开销。</span>
+<span>创建索引的语法：</span>
+<span>创建索引：</span>
+<span>1 ． 单列索引</span>
+<span>单列索引是基于单个列所建立的索引，比如:</span>
+<span>CREATE index 索引名 on 表名(列名)</span>
+<span>2 ． 复合索引</span>
+<span>复合索引是基于两个列或多个列的索引。在同一张表上可以有多个索引，但是要求列的组合必须不同,比如：</span>
+<span>Create index emp_idx1 on emp(ename,job);</span>
+<span>Create index emp_idx1 on emp(job,ename);</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">范例：给person表的name建立索引</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">create index pname_index on person(name);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">范例：给person表创建一个name和gender的索引</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">create index pname_gender_index on person(name, gender);</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 100px;"></div><div class="CodeMirror-gutters" style="display: none; height: 100px;"></div></div></div></pre><p><span>索引的使用原则：</span>
+<span>     在大表上建立索引才有意义</span>
+<span>     在where子句后面或者是连接条件上的字段建立索引</span>
+<span>     表中数据修改频率高时不建议建立索引</span></p><h3><a name="三plsql-基本语法了解" class="md-header-anchor"></a><span>三.pl/sql 基本语法[了解]</span></h3><p><span>什么是PL/SQL?</span>
+<span>PL/SQL（Procedure Language/SQL）</span>
+<span>PLSQL是Oracle对sql语言的过程化扩展，指在SQL命令语言中增加了过程处理语句（如分支、循环等），使SQL语言具有过程处理能力。把SQL语言的数据操纵能力与过程语言的数据处理能力结合起来，使得PLSQL面向过程但比过程语言简单、高效、灵活和实用。</span>
+<span>范例 1 ：为职工涨工资，每人涨 10 ％的工资。</span>
+<span>update emp set sal=sal*1.</span>
+<span>范例 2 ：例2: 按职工的职称长工资,总裁涨 1000 元,经理涨 800 元，其他人员涨 400 元。</span>
+<span>这样的需求我们就无法使用一条SQL来实现，需要借助其他程序来帮助完成，也可以使用pl/sql。</span></p><p><span>1.1.1 1.pl/sql程序语法</span>
+<span>程序语法：</span>
+<span>    declare</span>
+<span>        说明部分 （变量说明，游标申明，例外说明 〕</span>
+<span>    begin</span>
+<span>        语句序列 （DML语句〕...</span>
+<span>    exception</span>
+<span>        例外处理语句</span>
+<span>    End;</span>
+<span>1.1.2 2.常量和变量定义</span>
+<span>在程序的声明阶段可以来定义常量和变量。</span>
+<span>     变量的基本类型就是 oracle 中的建表时字段的变量如 char, varchar2, date, number, boolean, long</span>
+<span>        定义语法：varl char(15);</span>
+<span>                Psal number(9,2);</span>
+<span>        说明变量名、数据类型和长度后用分号结束说明语句。</span>
+<span>        常量定义：married constant boolean:=true</span>
+<span>     引用变量</span>
+<span>        Myname emp.ename%type;</span>
+<span>    引用型变量，即my_name的类型与emp表中ename列的类型一样</span>
+<span>    在sql中使用into来赋值</span>
+<span>        declare</span>
+<span>            emprec emp.ename%type;</span>
+<span>        begin</span>
+<span>            select t.ename into emprec from emp t where t.empno = 7369 ;</span>
+<span>            dbms_output.put_line(emprec);</span>
+<span>        end;</span>
+<span>     记录型变量</span>
+<span>        Emprec emp%rowtype</span>
+<span>            记录变量分量的引用</span>
+<span>        emp_rec.ename:=&#39;ADAMS&#39;;</span>
+<span>        declare</span>
+<span>            p emp%rowtype;</span>
+<span>        begin</span>
+<span>            select * into p from emp t where t.empno = 7369 ;</span>
+<span>            dbms_output.put_line(p.ename || &#39; &#39; || p.sal);</span>
+<span>        end;</span>
+<span>1.1.3 3. if分支</span>
+<span>语法 1 ：</span>
+<span>    IF 条件 THEN 语句1;</span>
+<span>    语句2;</span>
+<span>    END IF;</span>
+<span>语法 2 ：</span>
+<span>    IF 条件 THEN 语句序列 1 ；</span>
+<span>    ELSE 语句序列 2 ；</span>
+<span>    END IF；</span>
+<span>语法 3 ：</span>
+<span>    IF 条件 THEN 语句;</span>
+<span>    ELSIF 语句 THEN 语句;</span>
+<span>    ELSE 语句;</span>
+<span>    END IF;</span>
+<span>范例 1 ：如果从控制台输入 1 则输出我是 1</span>
+<span>    declare</span>
+<span>        pnum number := </span>&num;
+<span>    begin</span>
+<span>        if pnum = 1 then</span>
+<span>        dbms_output.put_line(&#39;我是1&#39;);</span>
+<span>        end if;</span>
+<span>    end;</span>
+<span>范例 2 ：如果从控制台输入 1 则输出我是 1 否则输出我不是 1</span>
+<span>    declare</span>
+<span>        mynum number := </span>&num;
+<span>    begin</span>
+<span>        if mynum = 1 then</span>
+<span>            dbms_output.put_line(&#39;我是1&#39;);</span>
+<span>        else</span>
+<span>            dbms_output.put_line(&#39;我不是1&#39;);</span>
+<span>        end if;</span>
+<span>    end;</span>
+<span>范例3:判断人的不同年龄段 18 岁以下是未成年人， 18 岁以上 40 以下是成年人， 40 以上是老年人</span>
+<span>    declare</span>
+<span>        mynum number := </span>&num;
+<span>    begin</span>
+<span>        if mynum &lt; 18 then</span>
+<span>            dbms_output.put_line(&#39;未成年人&#39;);</span>
+<span>        elsif mynum &gt;= 18 and mynum &lt; 40 then</span>
+<span>            dbms_output.put_line(&#39;中年人&#39;);</span>
+<span>        elsif mynum &gt;= 40 then</span>
+<span>            dbms_output.put_line(&#39;老年人&#39;);</span>
+<span>        end if;</span>
+<span>    end;</span>
+<span>1.1.4 4.LOOP循环语句</span>
+<span>语法 1 ：</span>
+<span>    WHILE total &lt;= 25000 LOOP</span>
+<span>    ...</span>
+<span>    total : = total + salary;</span>
+<span>    END LOOP;</span>
+<span>语法 2 ：</span>
+<span>    Loop</span>
+<span>    EXIT [when 条件];</span>
+<span>    ......</span>
+<span>    End loop</span>
+<span>语法 3 ：</span>
+<span>    FOR I IN 1.. 3 LOOP</span>
+<span>    语句序列 ;</span>
+<span>    END LOOP ;</span>
+<span>范例:使用语法 1 输出 1 到 10 的数字</span>
+<span>    declare</span>
+<span>        step number := 1 ;</span>
+<span>    begin</span>
+<span>        while step &lt;= 10 loop</span>
+<span>            dbms_output.put_line(step);</span>
+<span>            step := step + 1 ;</span>
+<span>        end loop;</span>
+<span>    end;</span>
+<span>范例:使用语法 2 输出 1 到 10 的数字</span>
+<span>    declare</span>
+<span>        step number := 1 ;</span>
+<span>    begin</span>
+<span>        loop</span>
+<span>            exit when step &gt; 10 ;</span>
+<span>            dbms_output.put_line(step);</span>
+<span>            step := step + 1 ;</span>
+<span>        end loop;</span>
+<span>    end;</span>
+<span>范例:使用语法 3 输出 1 到 10 的数字</span>
+<span>    declare</span>
+<span>        step number := 1 ;</span>
+<span>    begin</span>
+<span>        for step in 1 .. 10 loop</span>
+<span>            dbms_output.put_line(step);</span>
+<span>        end loop;</span>
+<span>    end;</span>
+<span>1.1.5 5.游标Cursor</span>
+<span>在写java程序中有集合的概念，那么在pl/sql中也会用到多条记录，这时候我们就要用到游标，游标可以存储查询返回的多条数据。</span>
+<span>语法：</span>
+<span>    CURSOR 游标名 [ (参数名 数据类型,参数名 数据类型,...)] IS SELECT 语句;</span>
+<span>例如：cursor c1 is select ename from emp;</span>
+<span>游标的使用步骤：</span>
+<span>     打开游标： open c1; (打开游标执行查询)</span>
+<span>     取一行游标的值：fetch c1 into pjob; (取一行到变量中)</span>
+<span>     关闭游标： close c1;(关闭游标释放资源)</span>
+<span>     游标的结束方式 exit when c1%notfound</span>
+<span>     注意： 上面的pjob必须与emp表中的job列类型一致：</span>
+<span>        定义：pjob emp.empjob%type;</span>
+<span>范例 1 ：使用游标方式输出emp表中的员工编号和姓名</span>
+<span>    declare</span>
+<span>        cursor pc is</span>
+<span>        select * from emp;</span>
+<span>        pemp emp%rowtype;</span>
+<span>    begin</span>
+<span>        open pc;</span>
+<span>            loop</span>
+<span>                fetch pc</span>
+<span>                into pemp;</span>
+<span>                exit when pc%notfound;</span>
+<span>                dbms_output.put_line(pemp.empno || &#39; &#39; || pemp.ename);</span>
+<span>            end loop;</span>
+<span>        close pc;</span>
+<span>    end;</span>
+<span>范例 2 ：按员工的工种涨工资,总裁 1000 元，经理涨 800 元其，他人员涨 400 元。</span>
+<span>备份出一张新表为myemp;create table myemp as select * from emp;</span>
+<span>    declare</span>
+<span>        cursor pc is</span>
+<span>        select * from myemp;</span>
+<span>        addsal myemp.sal%type;</span>
+<span>        pemp myemp%rowtype;</span>
+<span>    begin</span>
+<span>        open pc;</span>
+<span>            loop</span>
+<span>                fetch pc</span>
+<span>                into pemp;</span>
+<span>                exit when pc%notfound;</span>
+<span>                if pemp.job = &#39;PRESIDENT&#39; then</span>
+<span>                    addsal := 1000 ;</span>
+<span>                elsif pemp.job = &#39;MANAGER&#39; then</span>
+<span>                    addsal := 800 ;</span>
+<span>                else</span>
+<span>                    addsal := 400 ;</span>
+<span>                end if;</span>
+<span>                update myemp t set t.sal = t.sal + addsal where t.empno = pemp.empno;</span>
+<span>            end loop;</span>
+<span>        close pc;</span>
+<span>    end;</span>
+<span>范例 3 ：写一段PL/SQL程序，为部门号为 10 的员工涨工资。</span>
+<span>    declare</span>
+<span>        cursor pc(dno myemp.deptno%type) is</span>
+<span>        select empno from myemp where deptno = dno;</span>
+<span>        pno myemp.empno%type;</span>
+<span>    begin</span>
+<span>        open pc( 20 );</span>
+<span>            loop</span>
+<span>                fetch pc</span>
+<span>                into pno;</span>
+<span>                exit when pc%notfound;</span>
+<span>                update myemp t set t.sal = t.sal + 1000 where t.empno = pno;</span>
+<span>            end loop;</span>
+<span>        close pc;</span>
+<span>    end;</span></p><h3><a name="四存储过程理解" class="md-header-anchor"></a><span>四.存储过程[理解]</span></h3><p><span>存储过程（Stored Procedure）是在大型数据库系统中，一组为了完成特定功能的SQL 语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给出参数（如果该存储过程带有参数）来执行它。存储过程是数据库中的一个重要对象，任何一个设计良好的数据库应用程序都应该用到存储过程。</span></p><p><span>创建存储过程语法：</span>
+<span>    create [or replace] PROCEDURE 过程名[(参数名 in/out 数据类型)]</span>
+<span>    AS</span>
+<span>    begin</span>
+<span>        PLSQL子程序体；</span>
+<span>    End;</span>
+<span>或者</span>
+<span>    create [or replace] PROCEDURE 过程名[(参数名 in/out 数据类型)]</span>
+<span>    is</span>
+<span>    begin</span>
+<span>        PLSQL子程序体；</span>
+<span>    End 过程名;</span>
+<span>范例：创建一个输出helloword的存储过程</span>
+<span>    create or replace procedure helloworld is</span>
+<span>    begin</span>
+<span>        dbms_output.put_line(&#39;helloworld&#39;);</span>
+<span>    end helloworld;</span>
+<span>调用存储过程</span>
+<span>在plsql中调用存储过程</span>
+<span>    begin</span>
+<span>        -- Call the procedure</span>
+<span>        helloworld;</span>
+<span>    end;</span>
+<span>范例 2 ：给指定的员工涨 100 工资，并打印出涨前和涨后的工资</span>
+<span>分析：我们需要使用带有参数的存储过程</span>
+<span>    create or replace procedure addSal1(eno in number) is</span>
+<span>        pemp myemp%rowtype;</span>
+<span>    begin</span>
+<span>        select * into pemp from myemp where empno = eno;</span>
+<span>        update myemp set sal = sal + 100 where empno = eno;</span>
+<span>        dbms_output.put_line(&#39;涨工资前&#39; || pemp.sal || &#39;涨工资后&#39; || (pemp.sal + 100 ));</span>
+<span>    end addSal1;</span>
+<span>调用</span>
+<span>    begin</span>
+<span>        -- Call the procedure</span>
+<span>        addsal1(eno =&gt; 7902 );</span>
+<span>        commit;</span>
+<span>    end;</span></p><h3><a name="五存储函数理解" class="md-header-anchor"></a><span>五.存储函数[理解]</span></h3><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">create or replace function 函数名(Name in type, Name in type, ...) return 数据类型 is</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  结果变量 数据类型;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">begin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  return(结果变量);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">end函数名;</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 150px;"></div><div class="CodeMirror-gutters" style="display: none; height: 150px;"></div></div></div></pre><p><span>存储过程和存储函数的区别</span>
+<span>一般来讲，过程和函数的区别在于函数可以有一个返回值；而过程没有返回值。</span>
+<span>但过程和函数都可以通过out指定一个或多个输出参数。我们可以利用out参数，在过程和函数中实现返回多个值。</span>
+<span>范例：使用存储函数来查询指定员工的年薪</span>
+<span>    create or replace function empincome(eno in emp.empno%type) return</span>
+<span>        number is</span>
+<span>        psal emp.sal%type;</span>
+<span>        pcomm emp.comm%type;</span>
+<span>    begin</span>
+<span>        select t.sal into psal from emp t where t.empno = eno;</span>
+<span>        return psal * 12 + nvl(pcomm, 0 );</span>
+<span>    end;</span>
+<span>使用存储过程来替换上面的例子</span>
+<span>    create or replace procedure empincomep(eno in emp.empno%type,</span>
+<span>        income out number) is</span>
+<span>        psal emp.sal%type;</span>
+<span>        pcomm emp.comm%type;</span>
+<span>    begin</span>
+<span>        select t.sal, t.comm into psal, pcomm from emp t where t.empno = eno;</span>
+<span>        income := psal* 12 +nvl(pcomm, 0 );</span>
+<span>    end empincomep;</span>
+<span>调用：</span>
+<span>    declare</span>
+<span>        income number;</span>
+<span>    begin</span>
+<span>        empincomep( 7369 , income);</span>
+<span>        dbms_output.put_line(income);</span>
+<span>    end;</span></p><h3><a name="六触发器理解" class="md-header-anchor"></a><span>六.触发器[理解]</span></h3><p><span>数据库触发器是一个与表相关联的、存储的 PL/SQL程序。</span>
+<span>每当一个特定的数据操作语句(Insert,update,delete)在指定的表上发出时，Oracle自动地执行触发器中定义的语句序列。</span>
+<span>触发器可用于</span>
+<span>     数据确认</span>
+<span>     实施复杂的安全性检查</span>
+<span>     做审计，跟踪表上所做的数据操作等</span>
+<span>     数据的备份和同步</span>
+<span>触发器的类型</span>
+<span>语句级触发器 ：在指定的操作语句操作之前或之后执行一次，不管这条语句影响了多少行 。</span>
+<span>行级触发器（FOR EACH ROW） ：触发语句作用的每一条记录都被触发。在行级触发器中使用old和new伪记录变量, 识别值的状态。</span>
+<span>语法：</span>
+<span>    CREATE [or REPLACE] TRIGGER 触发器名</span>
+<span>        {BEFORE | AFTER}</span>
+<span>        {DELETE | INSERT | UPDATE [OF 列名]}</span>
+<span>        ON 表名</span>
+<span>        [FOR EACH ROW [WHEN(条件) ] ]</span>
+<span>    begin</span>
+<span>        PLSQL 块</span>
+<span>    End 触发器名</span>
+<span>范例：插入员工后打印一句话“一个新员工插入成功”</span>
+<span>    create or replace trigger testTrigger</span>
+<span>        after insert on person</span>
+<span>        declare</span>
+<span>        -- local variables here</span>
+<span>    begin</span>
+<span>        dbms_output.put_line(&#39;一个员工被插入&#39;);</span>
+<span>    end testTrigger;</span>
+<span>范例：不能在休息时间插入员工</span>
+<span>    create or replace trigger validInsertPerson</span>
+<span>        before insert on person</span>
+<span>        declare</span>
+<span>        weekend varchar2( 10 );</span>
+<span>    begin</span>
+<span>        select to_char(sysdate, &#39;day&#39;) into weekend from dual;</span>
+<span>        if weekend in (&#39;星期一&#39;) then</span>
+<span>            raise_application_error(-20001, &#39;不能在非法时间插入员工&#39;);</span>
+<span>        end if;</span>
+<span>    end validInsertPerson;</span>
+<span>当执行插入时会报错</span>
+<img src="img/1584090074199.png" referrerpolicy="no-referrer" alt="1584090074199">
+<span>在触发器中触发语句与伪记录变量的值</span></p><figure><table><thead><tr><th><span>触发语句</span></th><th><span>:old</span></th><th><span>:new</span></th></tr></thead><tbody><tr><td><span>Insert</span></td><td><span>所有字段都是空(null)</span></td><td><span>将要插入的数据</span></td></tr><tr><td><span>Update</span></td><td><span>更新以前该行的值</span></td><td><span>更新后的值</span></td></tr><tr><td><span>delete</span></td><td><span>删除以前该行的值</span></td><td><span>所有字段都是空(null)</span></td></tr></tbody></table></figure><p><span>范例：判断员工涨工资之后的工资的值一定要大于涨工资之前的工资</span>
+<span>    create or replace trigger addsal4p</span>
+<span>        before update of sal on myemp</span>
+<span>        for each row</span>
+<span>    begin</span>
+<span>        if :old.sal &gt;= :new.sal then</span>
+<span>            raise_application_error(- 20002 , &#39;涨前的工资不能大于涨后的工资&#39;);</span>
+<span>        end if;</span>
+<span>    end;</span>
+<span>调用</span>
+<span>update myemp t set t.sal = t.sal - 1 ;</span>
+<img src="img/1584090352338.png" referrerpolicy="no-referrer" alt="1584090352338"></p><h3><a name="七java程序调用存储过程应用" class="md-header-anchor"></a><span>七．Java程序调用存储过程[应用]</span></h3><p><span>1.1.6 1.java连接oracle的jar包</span>
+<span>可以在虚拟机中xp的oracle安装目录下找到jar包 :ojdbc14.jar</span>
+<img src="img/1584090488440.png" referrerpolicy="no-referrer" alt="1584090488440">
+<span>1.1.7 2.数据库连接字符串</span>
+<span>    String driver=&quot;oracle.jdbc.OracleDriver&quot;;</span>
+<span>    String url=&quot;jdbc:oracle:thin:@192.168.56.10:1521:orcl&quot;;</span>
+<span>    String username=&quot;scott&quot;;</span>
+<span>    String password=&quot;tiger&quot;;</span>
+<span>测试代码：</span>
+<img src="img/1584090514583.png" referrerpolicy="no-referrer" alt="1584090514583">
+<span>1.1.8 3.实现过程的调用</span>
+<span>1.1.8.1 1.调用过程</span>
+<span>1.1.8.1.1 1.过程定义</span>
+<span>-- 统计年薪的过程</span>
+<span>    create or replace procedure proc_countyearsal ( eno in number, esal out number)</span>
+<span>    as</span>
+<span>    begin</span>
+<span>        select sal * 12 +nvl( comm , 0 ) into esal from emp where empno = eno ;</span>
+<span>    end;</span>
+<span>-- 调用</span>
+<span>    declare</span>
+<span>        esal number;</span>
+<span>    begin</span>
+<span>        proc_countyearsal ( 7839 , esal );</span>
+<span>        dbms_output.put_line ( esal );</span>
+<span>    end;</span>
+<span>1.1.8.1.2 2.过程调用</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm" lang="java" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="java"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">@Test</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">public</span> <span class="cm-variable-3">void</span> <span class="cm-def">testProcedure01</span>(){</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable-3">String</span> <span class="cm-variable">driver</span><span class="cm-operator">=</span><span class="cm-string">"oracle.jdbc.OracleDriver"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable-3">String</span> <span class="cm-variable">url</span><span class="cm-operator">=</span><span class="cm-string">"jdbc:oracle:thin:@192.168.56.10:1521:orcl"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable-3">String</span> <span class="cm-variable">username</span><span class="cm-operator">=</span><span class="cm-string">"scott"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable-3">String</span> <span class="cm-variable">password</span><span class="cm-operator">=</span><span class="cm-string">"tiger"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">try</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">Class</span>. <span class="cm-variable">_forName_</span> (<span class="cm-variable">driver</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">Connection</span> <span class="cm-variable">con</span> <span class="cm-operator">=</span> <span class="cm-variable">DriverManager</span>. <span class="cm-variable">_getConnection_</span> (<span class="cm-variable">url</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">username</span>, <span class="cm-variable">password</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">CallableStatement</span> <span class="cm-variable">callSt</span> <span class="cm-operator">=</span> <span class="cm-variable">con</span>.<span class="cm-variable">prepareCall</span>(<span class="cm-string">"{call</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">proc_countyearsal</span>(<span class="cm-operator">?</span>,<span class="cm-operator">?</span>)}<span class="cm-string">");</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">callSt</span>.<span class="cm-variable">setInt</span>(<span class="cm-number">1</span>, <span class="cm-number">7839</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">callSt</span>.<span class="cm-variable">registerOutParameter</span>(<span class="cm-number">2</span>, <span class="cm-variable">OracleTypes</span>. <span class="cm-variable">_NUMBER_</span> );</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">callSt</span>.<span class="cm-variable">execute</span>();</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">System</span>. <span class="cm-variable">_out_</span> .<span class="cm-variable">println</span>(<span class="cm-variable">callSt</span>.<span class="cm-variable">getObject</span>(<span class="cm-number">2</span>));</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  } <span class="cm-keyword">catch</span> (<span class="cm-variable">Exception</span> <span class="cm-variable">e</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">e</span>.<span class="cm-variable">printStackTrace</span>();</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 500px;"></div><div class="CodeMirror-gutters" style="display: none; height: 500px;"></div></div></div></pre></div>
+</body>
+</html>

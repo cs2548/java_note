@@ -77,8 +77,8 @@ tocData = [
 		["04-oracle","static/html/66-oracle.html"],
 		["05-git","static/html/67-git.html"],
 		["06-lucene","static/html/68-lucene.html"],
-		["07-vue","static/html/69-vue.pdf"],
-		["08-Maven高级","static/html/70-Maven高级.pdf"],
+		["07-vue","static/html/69-vue.html"],
+		["08-Maven高级","static/html/70-Maven高级.html"],
 		["09-SSM项目","static/html/71-SSM项目.html"],
 	]],
 	["第五阶段 项目","",[
